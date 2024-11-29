@@ -45,13 +45,15 @@ public class Cuadrado extends FigurasGeometricas {
     }
 
     @Override
-    double calcularArea() {
-        return getLado() * getLado();
+    public double calcularArea() {
+        setArea(getLado() * getLado());
+        return getArea();
     }
 
     @Override
-    double calcularPerimetro() {
-        return 4* getLado();
+    public double calcularPerimetro() {
+        setPerimetro(4* getLado());
+        return getPerimetro();
     }
     
 }
