@@ -70,7 +70,7 @@ public class Menu extends javax.swing.JFrame {
     private void btnCAbstractaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCAbstractaActionPerformed
         // TODO add your handling code here:
         //CREO UN OBJETO DE TIPO FORMULARIO AL QUE QUIERO LLAMAR 
-        Cuadrado v1=new Cuadrado();
+        CuadradoForm v1=new CuadradoForm();
         // A ESE OBJETO LO HAGO VISIBLE ME DIANTE LA PROPIEDAD SETVISIBLE
         v1.setVisible(true);
         //FORMULARIO ACTUAL LE ESCONDO 

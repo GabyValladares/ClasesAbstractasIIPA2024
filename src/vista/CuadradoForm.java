@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
+import modelo.Cuadrado;
 
 /**
  *
  * @author Carlos
  */
-public class Cuadrado extends javax.swing.JFrame {
+public class CuadradoForm extends javax.swing.JFrame {
 
     /**
      * Creates new form Cuadrado
      */
-    public Cuadrado() {
+    public CuadradoForm() {
         initComponents();
+        c1.calcularPerimetro();
     }
 
     /**
@@ -32,6 +34,8 @@ public class Cuadrado extends javax.swing.JFrame {
         btnArea = new javax.swing.JButton();
         btnPerimetro = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAResultados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,7 +44,18 @@ public class Cuadrado extends javax.swing.JFrame {
 
         lblLado.setText("Ingrese el valor del lado:");
 
+        txtLado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLadoActionPerformed(evt);
+            }
+        });
+
         btnArea.setText("Calcular Área");
+        btnArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreaActionPerformed(evt);
+            }
+        });
 
         btnPerimetro.setText("Calcular Perímetro");
         btnPerimetro.addActionListener(new java.awt.event.ActionListener() {
@@ -56,25 +71,29 @@ public class Cuadrado extends javax.swing.JFrame {
             }
         });
 
+        txtAResultados.setColumns(20);
+        txtAResultados.setRows(5);
+        jScrollPane1.setViewportView(txtAResultados);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnArea)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(58, 58, 58)
                         .addComponent(btnPerimetro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnImprimir))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblLado)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtLado))
-                        .addComponent(lblTitulo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtLado))
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -82,28 +101,54 @@ public class Cuadrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblTitulo)
-                .addGap(44, 44, 44)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLado)
-                    .addComponent(txtLado, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnArea)
-                    .addComponent(btnPerimetro)
+                    .addComponent(txtLado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnArea)
+                        .addComponent(btnPerimetro))
                     .addComponent(btnImprimir))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    Cuadrado c1=new Cuadrado();
     private void btnPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerimetroActionPerformed
         // TODO add your handling code here:
+        c1.setLado(Double.parseDouble(txtLado.getText()));
+        
+        txtAResultados.setText("El perímetro es: "+c1.calcularPerimetro());
+        //DEBER
+        //IMPLEMENTAR BOTÓN IMPRIMIR
+        //IMPLEMENTAR BOTON NUEVO DE LIMPIAR
+        //IMPLEMENTAR LA CONCATENACIÓN DE RESULTADOS EN EL TXTAREA
     }//GEN-LAST:event_btnPerimetroActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void btnAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaActionPerformed
+        // TODO add your handling code here:
+        //CREO UN OBJETO DE TIPO CLASE CUADRADO
+        
+        // AL ATRIBUTO LADO LE INICIALIZO CON EL CONTENIDO DE TXTLADO Y LO TRANSFORMO DE STRING A DOUBLE
+        c1.setLado(Double.parseDouble(txtLado.getText()));
+        //,UESTRO EL RESULTADO EN EL ELEMENTO TEXTRESULTADOS
+        //DOUBLE A STRING PASO MEDIANTE +""
+        txtAResultados.setText("El área es: "+c1.calcularArea());
+        
+    }//GEN-LAST:event_btnAreaActionPerformed
+
+    private void txtLadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,7 +180,7 @@ public class Cuadrado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuadrado().setVisible(true);
+                new CuadradoForm().setVisible(true);
             }
         });
     }
@@ -144,8 +189,10 @@ public class Cuadrado extends javax.swing.JFrame {
     private javax.swing.JButton btnArea;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnPerimetro;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLado;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextArea txtAResultados;
     private javax.swing.JTextField txtLado;
     // End of variables declaration//GEN-END:variables
 }
