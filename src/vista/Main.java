@@ -5,7 +5,7 @@
 package vista;
 
 import modelo.Cuadrado;
-import modelo.FigurasGeometricas;
+
 
 /**
  *
