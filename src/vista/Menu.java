@@ -68,7 +68,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Cuadrado v1=new Cuadrado();
+        CuadradoForm v1=new CuadradoForm();
         v1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

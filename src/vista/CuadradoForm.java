@@ -3,17 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import modelo.Cuadrado;
 /**
  *
  * @author USER-LENOVO
  */
-public class Cuadrado extends javax.swing.JFrame {
-
+public class CuadradoForm extends javax.swing.JFrame {
+        Cuadrado cl =new Cuadrado();
     /**
      * Creates new form Cuadrado
      */
-    public Cuadrado() {
+    public CuadradoForm() {
         initComponents();
     }
 
@@ -32,6 +32,8 @@ public class Cuadrado extends javax.swing.JFrame {
         btnArea = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnPerimetro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtResultados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,16 +43,28 @@ public class Cuadrado extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel1.setText("Ingrese el valor del lado :");
 
+        btnArea.setBackground(new java.awt.Color(255, 204, 204));
         btnArea.setText("Calcular Área");
+        btnArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAreaActionPerformed(evt);
+            }
+        });
 
+        btnImprimir.setBackground(new java.awt.Color(204, 255, 255));
         btnImprimir.setText("Imprimir");
 
+        btnPerimetro.setBackground(new java.awt.Color(204, 204, 255));
         btnPerimetro.setText("Calcular Périmetro");
         btnPerimetro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerimetroActionPerformed(evt);
             }
         });
+
+        txtResultados.setColumns(20);
+        txtResultados.setRows(5);
+        jScrollPane1.setViewportView(txtResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,17 +76,20 @@ public class Cuadrado extends javax.swing.JFrame {
                     .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtLado, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLado, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 83, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(btnArea)
-                .addGap(27, 27, 27)
-                .addComponent(btnPerimetro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnImprimir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnArea)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnPerimetro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnImprimir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,13 +100,15 @@ public class Cuadrado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtLado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtLado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnArea)
                     .addComponent(btnPerimetro)
                     .addComponent(btnImprimir))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -97,7 +116,17 @@ public class Cuadrado extends javax.swing.JFrame {
 
     private void btnPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerimetroActionPerformed
         // TODO add your handling code here:
+        cl.setLado(Double.parseDouble(txtLado.getText()));
+       txtResultados.setText("El perímetro es: "+cl.calcularPerimetro());
     }//GEN-LAST:event_btnPerimetroActionPerformed
+
+    private void btnAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaActionPerformed
+        // TODO add your handling code here:
+         Cuadrado cl=new Cuadrado();
+         cl.setLado(Double.parseDouble(txtLado.getText()));       
+         cl.calcularArea();
+        txtResultados.setText("El área es : "+cl.calcularArea()+"");
+    }//GEN-LAST:event_btnAreaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +158,7 @@ public class Cuadrado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuadrado().setVisible(true);
+                new CuadradoForm().setVisible(true);
             }
         });
     }
@@ -139,7 +168,9 @@ public class Cuadrado extends javax.swing.JFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnPerimetro;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtLado;
+    private javax.swing.JTextArea txtResultados;
     // End of variables declaration//GEN-END:variables
 }
