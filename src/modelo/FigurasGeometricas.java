@@ -69,5 +69,6 @@ public abstract class FigurasGeometricas {
     //MÉTODOS ABSTRACTOS
     public abstract double calcularArea();
     public abstract double calcularPerimetro();
+    public abstract double calcular();
  
 }

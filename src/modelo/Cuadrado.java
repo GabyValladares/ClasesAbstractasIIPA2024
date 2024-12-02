@@ -55,5 +55,10 @@ public class Cuadrado extends FigurasGeometricas {
         setPerimetro(4* getLado());
         return getPerimetro();
     }
+
+    @Override
+    public double calcular() {
+        return 10.00;
+        }
     
 }
