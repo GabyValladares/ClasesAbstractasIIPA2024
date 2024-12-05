@@ -38,6 +38,7 @@ public class CuadradoForm extends javax.swing.JFrame {
         btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAResultados = new javax.swing.JTextArea();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +72,13 @@ public class CuadradoForm extends javax.swing.JFrame {
         txtAResultados.setRows(5);
         jScrollPane1.setViewportView(txtAResultados);
 
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,13 +94,20 @@ public class CuadradoForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLado, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnArea))
-                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(btnLimpiar)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtLado)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
                                 .addComponent(btnPerimetro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnImprimir))
-                            .addComponent(txtLado))))
+                                .addComponent(btnImprimir)))))
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
@@ -109,39 +124,50 @@ public class CuadradoForm extends javax.swing.JFrame {
                     .addComponent(btnArea)
                     .addComponent(btnPerimetro)
                     .addComponent(btnImprimir))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+        System.out.println(txtAResultados.getText());
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaActionPerformed
         // TODO add your handling code here:
         //CREO UN OBJETO DE TIPO CLASE CUADRADO
-
+        
         //AL ATRIBUTO LADO LE INICIALIZO CON EL CONTENIDO DE TXTLADO Y LO TRANSFORMO DE STRING A DOUBLE
         c1.setLado(Double.parseDouble(txtLado.getText()));
         //MUESTRO EL RESULTADO EN EL ELEMENTO TXTARESULTADOS 
         //DOUBLE A STRING PASO MEDIANTE +" "
-        txtAResultados.setText("El área es:" + c1.calcularArea());
+        String resultadoAnterior = txtAResultados.getText();
+        txtAResultados.setText(resultadoAnterior + "\nEl área es: " + c1.calcularArea());
+     
     }//GEN-LAST:event_btnAreaActionPerformed
 
     private void btnPerimetroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerimetroActionPerformed
         // TODO add your handling code here:
-        c1.setLado(Double.parseDouble(txtLado.getText()));        
-        txtAResultados.setText("El perímetro es:"+c1.calcularPerimetro());
+    c1.setLado(Double.parseDouble(txtLado.getText()));        
+    String resultadoAnterior = txtAResultados.getText();
+    txtAResultados.setText(resultadoAnterior + "\nEl perímetro es: " + c1.calcularPerimetro());
+        
         
         //DEBER 
-        //IMPLEMENTAR BOTÓN IMPRIMIR
+        //IM        PLEMENTAR   BOTÓN IMPRIMIR
         //IMPLEMENTAR BOTÓN NUEVO LIMPIAR
         //IMPLEMENTAR LA CONCATENACIÓN DE RESULTADOS EN EL TXTAREA
     }//GEN-LAST:event_btnPerimetroActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+          txtLado.setText(""); 
+          txtAResultados.setText(""); 
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +207,7 @@ public class CuadradoForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArea;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnPerimetro;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLado;
@@ -188,4 +215,4 @@ public class CuadradoForm extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAResultados;
     private javax.swing.JTextField txtLado;
     // End of variables declaration//GEN-END:variables
-}
+}           
