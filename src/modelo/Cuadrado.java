@@ -9,8 +9,9 @@ package modelo;
  * @author Usuario
  */
 public class Cuadrado extends FigurasGeometricas {
+
     private double lado;
-    
+
     //MÉTODO CONSTRUCTOR
     public Cuadrado() {
     }
@@ -23,9 +24,8 @@ public class Cuadrado extends FigurasGeometricas {
         super(nombre, area, perimetro);
         this.lado = lado;
     }
-    
-    //ENCAPSULAMIENTO
 
+    //ENCAPSULAMIENTO
     public double getLado() {
         return lado;
     }
@@ -36,12 +36,12 @@ public class Cuadrado extends FigurasGeometricas {
 
     @Override
     public String toString() {
-        return "DATOS DE CUADRADO:\n"+
-                "Nombre de la figura:"+getNombre()+"\n"+
-                "Área:"+getArea()+"\n"+
-                "Perímetro:"+getPerimetro()+"\n"+
-                "Lado:"+getLado();
-                
+        return "DATOS DE CUADRADO:\n"
+                + "Nombre de la figura:" + getNombre() + "\n"
+                + "Lado:" + getLado() + "\n"
+                + "Área:" + getArea() + "\n"
+                + "Perímetro:" + getPerimetro() + "\n";
+
     }
 
     @Override
@@ -52,13 +52,13 @@ public class Cuadrado extends FigurasGeometricas {
 
     @Override
     public double calcularPerimetro() {
-        setPerimetro(4* getLado());
+        setPerimetro(4 * getLado());
         return getPerimetro();
     }
 
     @Override
     public double calcular() {
         return 10.00;
-        }
-    
+    }
+
 }
